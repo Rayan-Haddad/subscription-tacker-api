@@ -9,6 +9,7 @@ const arcjetMiddleware = async (req, res, next) => {
       if (decision.reason.isRateLimit())
         return res.status(429).json({ error: "Rate limit exceeded" });
     }
+    next();
   } catch (error) {
     console.log(`Arcjet middleware error: ${error}`);
     next(error);
